@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Sala GOEZ — Kevin Goez</title>
+<meta name="description" content="Aprende cómo Kevin Goez pasó de camarero y asesor inmobiliario a vivir 100% del dropshipping. Agenda tu llamada." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+<link rel="icon" href="assets/optimized/logo-agencia-goez.webp" />
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <div class="wordmark">Kevin <span>Goez</span></div>
+    <a href="#formulario" class="btn btn-primary header-cta">Agendar llamada</a>
+  </div>
+</header>
+
+<main>
+
+  <!-- ============ HERO ============ -->
+  <section class="hero">
+    <div class="container">
+      <h1>Aprende cómo pasé de camarero y asesor inmobiliario en Tecnocasa a <span class="highlight">vivir 100% del dropshipping</span></h1>
+      <p class="hero-sub">Empecé completamente desde 0 en 2024. Te enseño cómo puedes hacerlo paso a paso en mi formación.</p>
+
+      <!-- PENDIENTE: video bienvenida Kevin -->
+      <div class="video-frame">
+        <div class="video-placeholder">
+          <div class="play-btn">▶</div>
+          <small>Vídeo de bienvenida — próximamente</small>
+        </div>
+      </div>
+
+      <a href="#formulario" class="btn btn-primary">Agendar llamada</a>
+    </div>
+  </section>
+
+  <!-- ============ HISTORIA PERSONAL ============ -->
+  <section class="section story-section">
+    <div class="container">
+      <div class="story">
+        <div class="story-media">
+          <img src="assets/optimized/kevin-lifestyle.webp" alt="Kevin Goez junto a su coche, con notificaciones de nuevos pedidos de Shopify" loading="lazy" width="900" height="1124" />
+        </div>
+        <div class="story-copy">
+          <span class="eyebrow">Mi historia</span>
+          <h2>De <span class="highlight">camarero</span> a construir mi propio camino en e-commerce</h2>
+          <p>De camarero y asesor inmobiliario en Tecnocasa a facturar miles en dropshipping. Empecé creando mi propia agencia de marketing, y con esa base construí después mi camino en el e-commerce.</p>
+          <p>Si yo pude hacerlo empezando desde cero, tú también puedes.</p>
+          <a href="#formulario" class="btn btn-primary">Agendar llamada</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ RESULTADOS ============ -->
+  <section class="section results-section">
+    <div class="container">
+      <div class="results-header">
+        <span class="eyebrow">Resultados</span>
+        <h2>Resultados de alumnos</h2>
+        <p>Estos son algunos de los resultados reales que hemos conseguido dentro de Sala GOEZ.</p>
+      </div>
+
+      <div class="carousel-wrap">
+        <div class="carousel" id="resultsCarousel"><!-- las tarjetas se generan por JS desde script.js --></div>
+        <div class="carousel-controls">
+          <button class="carousel-btn" id="carouselPrev" aria-label="Anterior">‹</button>
+          <button class="carousel-btn" id="carouselNext" aria-label="Siguiente">›</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FORMULARIO MULTI-STEP ============ -->
+  <section class="section form-section" id="formulario">
+    <div class="container">
+      <div class="results-header">
+        <span class="eyebrow">Aplicación</span>
+        <h2>¿Encajas en Sala GOEZ?</h2>
+        <p>Responde estas 6 preguntas rápidas para saber si podemos ayudarte.</p>
+      </div>
+
+      <form class="form-card" id="qualForm" novalidate>
+
+        <div class="form-progress">
+          <span class="count" id="stepCount">01 → 06</span>
+          <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+        </div>
+
+        <button type="button" class="form-back" id="backBtn" hidden>‹ Atrás</button>
+
+        <!-- Paso 1 -->
+        <div class="form-step active" data-step="1">
+          <h3>¿Cuándo estarías disponible para empezar?</h3>
+          <span class="step-hint">Si tu aplicación es aceptada.</span>
+          <div class="option-list">
+            <button type="button" class="option" data-value="Ahora mismo"><span class="letter">A</span><span>Ahora mismo</span></button>
+            <button type="button" class="option" data-value="Esta semana"><span class="letter">B</span><span>Esta semana</span></button>
+            <button type="button" class="option" data-value="No lo sé porque no sé tomar decisiones"><span class="letter">C</span><span>No lo sé porque no sé tomar decisiones</span></button>
+          </div>
+        </div>
+
+        <!-- Paso 2 -->
+        <div class="form-step" data-step="2">
+          <h3>¿Cuál es tu situación actual?</h3>
+          <div class="option-list">
+            <button type="button" class="option" data-value="Tengo trabajo/estudios y quiero un cambio"><span class="letter">A</span><span>Tengo trabajo/estudios y quiero un cambio</span></button>
+            <button type="button" class="option" data-value="Ya lo intenté antes y no funcionó"><span class="letter">B</span><span>Ya lo intenté antes y no funcionó</span></button>
+            <button type="button" class="option" data-value="Estoy empezando completamente de cero"><span class="letter">C</span><span>Estoy empezando completamente de cero</span></button>
+          </div>
+        </div>
+
+        <!-- Paso 3 -->
+        <div class="form-step" data-step="3">
+          <h3>¿Cuánto podrías invertir para arrancar tu tienda?</h3>
+          <span class="step-hint">Hablamos de presupuesto inicial, no del coste de la mentoría.</span>
+          <div class="option-list">
+            <button type="button" class="option" data-value="Menos de 500€"><span class="letter">A</span><span>Menos de 500€</span></button>
+            <button type="button" class="option" data-value="Entre 500€ y 2.000€"><span class="letter">B</span><span>Entre 500€ y 2.000€</span></button>
+            <button type="button" class="option" data-value="Más de 2.000€"><span class="letter">C</span><span>Más de 2.000€</span></button>
+          </div>
+        </div>
+
+        <!-- Paso 4 -->
+        <div class="form-step" data-step="4">
+          <h3>¿Cuántas horas a la semana le podrías dedicar?</h3>
+          <div class="option-list">
+            <button type="button" class="option" data-value="Menos de 5 horas"><span class="letter">A</span><span>Menos de 5 horas</span></button>
+            <button type="button" class="option" data-value="Entre 5 y 15 horas"><span class="letter">B</span><span>Entre 5 y 15 horas</span></button>
+            <button type="button" class="option" data-value="Todo el tiempo que haga falta"><span class="letter">C</span><span>Todo el tiempo que haga falta</span></button>
+          </div>
+        </div>
+
+        <!-- Paso 5 -->
+        <div class="form-step" data-step="5">
+          <h3>¿Qué es lo que más te frena ahora mismo?</h3>
+          <div class="option-list">
+            <button type="button" class="option" data-value="No sé por dónde empezar"><span class="letter">A</span><span>No sé por dónde empezar</span></button>
+            <button type="button" class="option" data-value="Ya lo intenté y no me salió"><span class="letter">B</span><span>Ya lo intenté y no me salió</span></button>
+            <button type="button" class="option" data-value="Tengo miedo a invertir y que no funcione"><span class="letter">C</span><span>Tengo miedo a invertir y que no funcione</span></button>
+          </div>
+        </div>
+
+        <!-- Paso 6 -->
+        <div class="form-step" data-step="6">
+          <h3>¿Qué tan en serio te lo estás tomando?</h3>
+          <div class="option-list">
+            <button type="button" class="option" data-value="100% comprometido, quiero empezar ya"><span class="letter">A</span><span>100% comprometido, quiero empezar ya</span></button>
+            <button type="button" class="option" data-value="Interesado, pero quiero ver si encajo"><span class="letter">B</span><span>Interesado, pero quiero ver si encajo</span></button>
+            <button type="button" class="option" data-value="Solo estoy mirando opciones"><span class="letter">C</span><span>Solo estoy mirando opciones</span></button>
+          </div>
+        </div>
+
+        <!-- Paso 7: datos de contacto -->
+        <div class="form-step" data-step="7">
+          <h3>Rellena tus datos para reservar tu llamada</h3>
+          <div class="field">
+            <label for="fName">Nombre</label>
+            <input type="text" id="fName" name="nombre" autocomplete="name" required />
+          </div>
+          <div class="field">
+            <label for="fEmail">Email</label>
+            <input type="email" id="fEmail" name="email" autocomplete="email" required />
+          </div>
+          <div class="field">
+            <label for="fPhone">WhatsApp</label>
+            <input type="tel" id="fPhone" name="whatsapp" autocomplete="tel" required />
+          </div>
+          <button type="submit" class="btn btn-primary btn-block">Reservar mi llamada</button>
+        </div>
+
+        <!-- Paso 8: gracias -->
+        <div class="form-step" data-step="8">
+          <div class="thanks">
+            <div class="check">✓</div>
+            <h3>¡Solicitud enviada!</h3>
+            <p>Hemos recibido tus datos. Si tu aplicación es aceptada, te contactaremos por WhatsApp para agendar tu llamada.</p>
+          </div>
+        </div>
+
+      </form>
+      <!-- PENDIENTE: conectar el envío del formulario a CRM / hoja de cálculo / Meta CAPI. Actualmente el envío solo se simula en el cliente (ver script.js). -->
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div class="footer-logo">
+      <img src="assets/optimized/logo-agencia-goez.webp" alt="Agencia GOEZ Marketing" width="120" height="120" loading="lazy" />
+    </div>
+    <div class="footer-social">
+      <!-- PENDIENTE: enlaces reales a redes sociales -->
+      <a href="#" rel="noopener">Instagram</a>
+      <a href="#" rel="noopener">TikTok</a>
+    </div>
+    <p class="footer-legal">
+      <!-- PENDIENTE: copy legal definitivo (aviso legal, política de privacidad, condiciones) -->
+      © 2026 Sala GOEZ · Agencia GOEZ Marketing. Todos los derechos reservados. Los resultados mostrados corresponden a alumnos concretos y no constituyen una garantía de resultados.
+    </p>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

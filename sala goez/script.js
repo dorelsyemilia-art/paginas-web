@@ -60,8 +60,7 @@ function renderCarousel() {
   const track = document.getElementById("resultsCarousel");
   if (!track) return;
 
-  track.innerHTML = RESULTS.map(
-    (r) => `
+  const card = (r) => `
     <article class="result-card">
       <div class="shot">
         <span class="result-tag">${r.tag}</span>
@@ -71,25 +70,46 @@ function renderCarousel() {
         <p class="stat">${r.stat}</p>
         <p class="meta">${r.meta}</p>
       </div>
-    </article>`
-  ).join("");
+    </article>`;
+
+  // El set se duplica para lograr el loop infinito sin salto: la animación
+  // recorre exactamente el ancho de un set (translateX(-50%)) y luego reinicia.
+  track.innerHTML = RESULTS.map(card).join("") + RESULTS.map(card).join("");
 }
 
 function initCarouselControls() {
   const track = document.getElementById("resultsCarousel");
-  const prev = document.getElementById("carouselPrev");
-  const next = document.getElementById("carouselNext");
-  if (!track || !prev || !next) return;
+  const toggle = document.getElementById("carouselToggle");
+  if (!track || !toggle) return;
 
-  const scrollByCard = (dir) => {
-    const card = track.querySelector(".result-card");
-    const gap = 16;
-    const distance = card ? card.offsetWidth + gap : 300;
-    track.scrollBy({ left: dir * distance, behavior: "smooth" });
+  let paused = false;
+
+  const setPaused = (value) => {
+    paused = value;
+    track.classList.toggle("is-paused", paused);
+    toggle.textContent = paused ? "▶" : "⏸";
+    toggle.setAttribute("aria-pressed", String(paused));
+    toggle.setAttribute("aria-label", paused ? "Reanudar animación" : "Pausar animación");
   };
 
-  prev.addEventListener("click", () => scrollByCard(-1));
-  next.addEventListener("click", () => scrollByCard(1));
+  toggle.addEventListener("click", () => setPaused(!paused));
+
+  // En móvil no hay :hover persistente, así que al tocar pausamos
+  // manualmente y reanudamos al soltar (si el usuario no la pausó él mismo).
+  track.addEventListener(
+    "touchstart",
+    () => {
+      if (!paused) track.classList.add("is-touching");
+    },
+    { passive: true }
+  );
+  track.addEventListener(
+    "touchend",
+    () => {
+      track.classList.remove("is-touching");
+    },
+    { passive: true }
+  );
 }
 
 // ---------- Formulario multi-step ----------
@@ -167,8 +187,34 @@ function initForm() {
   showStep(1);
 }
 
+// ---------- Scroll reveal ----------
+function initScrollReveal() {
+  const targets = document.querySelectorAll(".reveal");
+  if (!targets.length) return;
+
+  if (!("IntersectionObserver" in window)) {
+    targets.forEach((el) => el.classList.add("is-visible"));
+    return;
+  }
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.15, rootMargin: "0px 0px -8% 0px" }
+  );
+
+  targets.forEach((el) => observer.observe(el));
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   renderCarousel();
   initCarouselControls();
   initForm();
+  initScrollReveal();
 });

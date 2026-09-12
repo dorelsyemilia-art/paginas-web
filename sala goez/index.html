@@ -7,7 +7,7 @@
 <meta name="description" content="Aprende cómo Kevin Goez pasó de camarero y asesor inmobiliario a vivir 100% del dropshipping. Agenda tu llamada." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@300;400;700;800;900&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="styles.css" />
 <link rel="icon" href="assets/optimized/logo-agencia-goez.webp" />
 </head>
@@ -15,7 +15,7 @@
 
 <header class="site-header">
   <div class="container">
-    <div class="wordmark">Kevin <span>Goez</span></div>
+    <div class="wordmark"><span class="wordmark-light">Kevin</span> <span class="wordmark-bold">Goez</span></div>
     <a href="#formulario" class="btn btn-primary header-cta">Agendar llamada</a>
   </div>
 </header>
@@ -25,25 +25,27 @@
   <!-- ============ HERO ============ -->
   <section class="hero">
     <div class="container">
-      <h1>Aprende cómo pasé de camarero y asesor inmobiliario en Tecnocasa a <span class="highlight">vivir 100% del dropshipping</span></h1>
-      <p class="hero-sub">Empecé completamente desde 0 en 2024. Te enseño cómo puedes hacerlo paso a paso en mi formación.</p>
+      <div class="hero-inner reveal">
+        <h1>Aprende cómo pasé de camarero y asesor inmobiliario en Tecnocasa a <span class="highlight">vivir 100% del dropshipping</span></h1>
+        <p class="hero-sub">Empecé completamente desde 0 en 2024. Te enseño cómo puedes hacerlo paso a paso en mi formación.</p>
 
-      <!-- PENDIENTE: video bienvenida Kevin -->
-      <div class="video-frame">
-        <div class="video-placeholder">
-          <div class="play-btn">▶</div>
-          <small>Vídeo de bienvenida — próximamente</small>
+        <!-- PENDIENTE: video bienvenida Kevin -->
+        <div class="video-frame">
+          <div class="video-placeholder">
+            <div class="play-btn">▶</div>
+            <small>Vídeo de bienvenida — próximamente</small>
+          </div>
         </div>
-      </div>
 
-      <a href="#formulario" class="btn btn-primary">Agendar llamada</a>
+        <a href="#formulario" class="btn btn-primary">Agendar llamada</a>
+      </div>
     </div>
   </section>
 
   <!-- ============ HISTORIA PERSONAL ============ -->
   <section class="section story-section">
     <div class="container">
-      <div class="story">
+      <div class="story reveal">
         <div class="story-media">
           <img src="assets/optimized/kevin-lifestyle.webp" alt="Kevin Goez junto a su coche, con notificaciones de nuevos pedidos de Shopify" loading="lazy" width="900" height="1124" />
         </div>
@@ -61,18 +63,15 @@
   <!-- ============ RESULTADOS ============ -->
   <section class="section results-section">
     <div class="container">
-      <div class="results-header">
+      <div class="results-header reveal">
         <span class="eyebrow">Resultados</span>
         <h2>Resultados de alumnos</h2>
         <p>Estos son algunos de los resultados reales que hemos conseguido dentro de Sala GOEZ.</p>
       </div>
 
-      <div class="carousel-wrap">
-        <div class="carousel" id="resultsCarousel"><!-- las tarjetas se generan por JS desde script.js --></div>
-        <div class="carousel-controls">
-          <button class="carousel-btn" id="carouselPrev" aria-label="Anterior">‹</button>
-          <button class="carousel-btn" id="carouselNext" aria-label="Siguiente">›</button>
-        </div>
+      <div class="carousel-wrap reveal">
+        <div class="carousel-track" id="resultsCarousel"><!-- las tarjetas se generan por JS desde script.js, duplicadas para el loop --></div>
+        <button type="button" class="carousel-toggle" id="carouselToggle" aria-label="Pausar animación" aria-pressed="false">⏸</button>
       </div>
     </div>
   </section>
@@ -80,13 +79,13 @@
   <!-- ============ FORMULARIO MULTI-STEP ============ -->
   <section class="section form-section" id="formulario">
     <div class="container">
-      <div class="results-header">
+      <div class="results-header reveal">
         <span class="eyebrow">Aplicación</span>
         <h2>¿Encajas en Sala GOEZ?</h2>
         <p>Responde estas 6 preguntas rápidas para saber si podemos ayudarte.</p>
       </div>
 
-      <form class="form-card" id="qualForm" novalidate>
+      <form class="form-card reveal" id="qualForm" novalidate>
 
         <div class="form-progress">
           <span class="count" id="stepCount">01 → 06</span>
@@ -192,7 +191,7 @@
 </main>
 
 <footer class="site-footer">
-  <div class="container footer-inner">
+  <div class="container footer-inner reveal">
     <div class="footer-logo">
       <img src="assets/optimized/logo-agencia-goez.webp" alt="Agencia GOEZ Marketing" width="120" height="120" loading="lazy" />
     </div>

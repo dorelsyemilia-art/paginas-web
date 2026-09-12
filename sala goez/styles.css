@@ -93,6 +93,28 @@ p {
     0 0 32px var(--accent-glow-soft);
 }
 
+/* ---------- Scroll reveal ---------- */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 650ms cubic-bezier(0.16, 1, 0.3, 1),
+    transform 650ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
 /* ---------- Buttons ---------- */
 
 .btn {
@@ -164,13 +186,18 @@ p {
 
 .wordmark {
   font-family: var(--font-display);
-  font-weight: 900;
   font-size: 20px;
   letter-spacing: 0.02em;
   text-transform: uppercase;
 }
 
-.wordmark span {
+.wordmark-light {
+  font-weight: 300;
+  color: var(--text);
+}
+
+.wordmark-bold {
+  font-weight: 800;
   color: var(--accent);
   text-shadow: 0 0 10px var(--accent-glow), 0 0 24px var(--accent-glow-soft);
 }
@@ -339,32 +366,79 @@ p {
 
 .carousel-wrap {
   position: relative;
+  overflow: hidden;
+  padding: 4px 0 8px;
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0,
+    #000 40px,
+    #000 calc(100% - 40px),
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent 0,
+    #000 40px,
+    #000 calc(100% - 40px),
+    transparent 100%
+  );
 }
 
-.carousel {
+.carousel-track {
   display: flex;
   gap: 16px;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  padding: 4px 4px 20px;
-  margin: 0 -4px;
-  scrollbar-width: thin;
-  scrollbar-color: var(--accent-dark) transparent;
+  width: max-content;
+  animation: marquee 46s linear infinite;
+  will-change: transform;
 }
 
-.carousel::-webkit-scrollbar {
-  height: 6px;
+.carousel-wrap:hover .carousel-track,
+.carousel-track.is-touching,
+.carousel-track.is-paused {
+  animation-play-state: paused;
 }
 
-.carousel::-webkit-scrollbar-thumb {
-  background: var(--accent-dark);
-  border-radius: 999px;
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .carousel-track {
+    animation: none;
+  }
+}
+
+.carousel-toggle {
+  position: absolute;
+  right: 8px;
+  bottom: -4px;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: var(--bg-elevated);
+  color: var(--text-dim);
+  font-size: 13px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.carousel-toggle:hover {
+  border-color: var(--accent);
+  color: var(--accent);
 }
 
 .result-card {
   flex: 0 0 auto;
   width: min(78vw, 300px);
-  scroll-snap-align: start;
   background: var(--bg-card);
   border: 1px solid var(--border);
   border-radius: var(--radius);
@@ -415,33 +489,6 @@ p {
   font-size: 12.5px;
   color: var(--text-dim);
   margin-top: 4px;
-}
-
-.carousel-controls {
-  display: flex;
-  justify-content: center;
-  gap: 14px;
-  margin-top: 8px;
-}
-
-.carousel-btn {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  border: 1px solid var(--border);
-  background: var(--bg-elevated);
-  color: var(--text);
-  font-size: 16px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: border-color 0.2s ease, color 0.2s ease;
-}
-
-.carousel-btn:hover {
-  border-color: var(--accent);
-  color: var(--accent);
 }
 
 /* ---------- Formulario multi-step ---------- */
